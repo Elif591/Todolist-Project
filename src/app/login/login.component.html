@@ -1,0 +1,17 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Login Form -->
+    <form style="margin-top: 5rem;">
+      <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
+      <input type="password" id="password" class="fadeIn third password" name="passowrd" placeholder="Password">
+      <input type="submit" class="fadeIn fourth" value="Login" [routerLink]="['/dashboard']">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" [routerLink]="['/register']">Don't have an account? Register</a>
+    </div>
+  </div>
+</div>
+
