@@ -3,15 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { DailyMonthlyComponent } from './daily-monthly/daily-monthly.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { CreatetaskComponent } from './createtask/createtask.component';
+
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DailyMonthlyComponent },
-  { path: 'newtask', component: CreatetaskComponent },
   { path: '', redirectTo: '/register', pathMatch: 'full' },
-
 ];
 
 @NgModule({
