@@ -5,28 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DailyListComponent } from './daily-list/daily-list.component';
-import { DailyMonthlyComponent } from './daily-monthly/daily-monthly.component';
-import { MonthlyListComponent } from './monthly-list/monthly-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { MonthlyListComponent } from './monthly-list/monthly-list.component';
 import { CreatetaskComponent } from './createtask/createtask.component';
-
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     DailyListComponent,
-    DailyMonthlyComponent,
+    DashboardComponent,
     MonthlyListComponent,
     RegisterComponent,
     LoginComponent,
     CreatetaskComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
