@@ -19,17 +19,17 @@
           <em
             *ngIf="loginForm.controls['userName']?.invalid &&
               loginForm.controls['userName']?.touched && loginForm.controls['userName'].errors?.['pattern']"
-            >Must start with a letter</em
+            >Must start with a letter  </em
           >
           <em
             *ngIf="loginForm.controls['userName']?.invalid &&
               loginForm.controls['userName']?.touched && loginForm.controls['userName'].errors?.['maxlenght']"
-            >userName can be up to 20 characters</em
+            >Username can be up to 20 characters</em
           >
           <em
             *ngIf="loginForm.controls['userName']?.invalid &&
               loginForm.controls['userName']?.touched && loginForm.controls['userName'].errors?.['minlength']"
-            >userName can be at least 4 characters</em
+            >Username can be at least 4 characters</em
           >
           <input
             formControlName="userName"

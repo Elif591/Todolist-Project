@@ -10,7 +10,6 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   loginUser(_userName: string, _password: string) {
-    debugger;
     let loginInfo = {
       userName: _userName,
       password: _password,
