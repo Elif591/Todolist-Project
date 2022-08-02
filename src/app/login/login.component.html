@@ -1,17 +1,81 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
+    <div style="margin-bottom: -4rem">
+      <h2>Log in</h2>
+    </div>
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="login(loginForm.value)"
+      autocomplete="off"
+      novalidate
+      style="margin-top: 5rem"
+    >
+      <div class="form-group">
+        <em
+          *ngIf="loginForm.controls['userName']?.invalid &&
+              loginForm.controls['userName']?.touched && loginForm.controls['userName'].errors?.['required']"
+          >Required</em
+        >
 
-    <!-- Login Form -->
-    <form style="margin-top: 5rem;">
-      <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
-      <input type="password" id="password" class="fadeIn third password" name="passowrd" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Login" [routerLink]="['/dashboard']">
+        <em
+          *ngIf="loginForm.controls['userName']?.invalid &&
+              loginForm.controls['userName']?.touched && loginForm.controls['userName'].errors?.['pattern']"
+        >
+          <br />Must start with a letter
+        </em>
+
+        <em
+          *ngIf="loginForm.controls['userName']?.invalid &&
+              loginForm.controls['userName']?.touched && loginForm.controls['userName'].errors?.['maxlenght']"
+        >
+          <br />
+          Username can be up to 20 characters</em
+        >
+
+        <em
+          *ngIf="loginForm.controls['userName']?.invalid &&
+              loginForm.controls['userName']?.touched && loginForm.controls['userName'].errors?.['minlength']"
+        >
+          <br />Username can be at least 4 characters</em
+        >
+
+        <input
+          formControlName="userName"
+          type="text"
+          id="userName"
+          class="form-control"
+          placeholder="username..."
+        />
+      </div>
+      <div class="form-group">
+        <em
+          *ngIf="loginForm.controls['password']?.invalid &&
+              loginForm.controls['password']?.touched  && loginForm.controls['password'].errors?.['required']"
+          >Required</em
+        >
+        <em
+          *ngIf="loginForm.controls['password']?.invalid &&
+              loginForm.controls['password']?.touched && loginForm.controls['password'].errors?.['minlength']"
+          >Password must be at least 6 characters</em
+        >
+        <input
+          formControlName="password"
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Password..."
+        />
+      </div>
+      <button type="submit" class="btn btn-secondary" value="Login">
+        Login
+      </button>
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover"  [routerLink]="['/register']" >Don't have an account? Register</a>
+      <a class="underlineHover" [routerLink]="['/register']"
+        >Don't have an account? Register</a
+      >
     </div>
   </div>
 </div>
-
