@@ -16,14 +16,12 @@
               loginForm.controls['userName']?.touched && loginForm.controls['userName'].errors?.['required']"
           >Required</em
         >
-
         <em
           *ngIf="loginForm.controls['userName']?.invalid &&
               loginForm.controls['userName']?.touched && loginForm.controls['userName'].errors?.['pattern']"
         >
           <br />Must start with a letter
         </em>
-
         <em
           *ngIf="loginForm.controls['userName']?.invalid &&
               loginForm.controls['userName']?.touched && loginForm.controls['userName'].errors?.['maxlenght']"
@@ -31,14 +29,12 @@
           <br />
           Username can be up to 20 characters</em
         >
-
         <em
           *ngIf="loginForm.controls['userName']?.invalid &&
               loginForm.controls['userName']?.touched && loginForm.controls['userName'].errors?.['minlength']"
         >
           <br />Username can be at least 4 characters</em
         >
-
         <input
           formControlName="userName"
           type="text"
@@ -56,7 +52,8 @@
         <em
           *ngIf="loginForm.controls['password']?.invalid &&
               loginForm.controls['password']?.touched && loginForm.controls['password'].errors?.['minlength']"
-          >Password must be at least 6 characters</em
+        >
+          <br />Username can be at least 4 characters</em
         >
         <input
           formControlName="password"
@@ -70,8 +67,6 @@
         Login
       </button>
     </form>
-
-    <!-- Remind Passowrd -->
     <div id="formFooter">
       <a class="underlineHover" [routerLink]="['/register']"
         >Don't have an account? Register</a

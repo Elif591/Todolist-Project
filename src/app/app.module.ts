@@ -13,6 +13,8 @@ import { AuthService  } from './auth/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule} from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,8 +33,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
   ],
-  providers: [AuthService],
+  providers: [AuthService, ToastrService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

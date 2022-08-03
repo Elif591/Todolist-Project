@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IUser } from './user.model';
 import { catchError, of, tap } from 'rxjs';
-
+import { environment } from 'src/environments/environment.prod';
 @Injectable()
 export class AuthService {
   currentUser: IUser;
+  public apiUrl: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+
+  }
 
   loginUser(_userName: string, _password: string) {
     let loginInfo = {
@@ -18,18 +21,16 @@ export class AuthService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
 
-    return this.http
-      .post('/api/login', loginInfo, options)
-      .pipe(tap((data:any) => {
-        this.currentUser = <IUser> data['user']
+    let response = this.http.post(environment.apiUrl, loginInfo, options).pipe(
+      tap((data: any) => {
+        this.currentUser = <IUser>data['user'];
       })
-      )
-      .pipe(
-        catchError((err) => {
-          return of(false);
-        })
-      );
+    );
+    return response;
   }
+
+
+
   isAuthenticated() {
     return !!this.currentUser;
   }

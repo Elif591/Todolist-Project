@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router} from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { IUser } from '../auth/user.model';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,10 +11,12 @@ import { IUser } from '../auth/user.model';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+
   constructor(
     private authService: AuthService,
     private route: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -28,13 +30,7 @@ export class LoginComponent implements OnInit {
           Validators.maxLength(20),
         ],
       ],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(6),
-        ],
-      ],
+      password: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
 
@@ -43,13 +39,12 @@ export class LoginComponent implements OnInit {
       this.authService
         .loginUser(formValues.userName, formValues.password)
         .subscribe((resp) => {
-          if (!resp) {
+          if (resp == false) {
+            this.toastr.warning('Incorrect username or password');
           } else {
-            this.route.navigate(['/dashboard']);
+            this.route.navigate(['/dashboard'])
           }
         });
     }
   }
-
-
 }
