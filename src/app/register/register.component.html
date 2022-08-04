@@ -1,19 +1,120 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
-
-    <!-- Login Form -->
-    <form style="margin-top: 5rem;">
-      <input type="text" id="Name" class="fadeIn second" name="Name" placeholder="Name">
-      <input type="text" id="Email" class="fadeIn second" name="Email" placeholder="Email">
-      <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
-      <input type="password" id="password" class="fadeIn third password" name="passowrd" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Register" [routerLink]="['/login']">
+     <div style="margin-bottom: -4rem">
+      <h2>Register</h2>
+    </div>
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="register(registerForm.value)"
+      autocomplete="off"
+      novalidate
+      style="margin-top: 5rem"
+    >
+     <div class="form-group">
+        <em
+          *ngIf="registerForm.controls['Name']?.invalid &&
+              registerForm.controls['Name']?.touched && registerForm.controls['Name'].errors?.['pattern']"
+        >
+          <br />Must start with a letter
+        </em>
+        <em
+          *ngIf="registerForm.controls['Name']?.invalid &&
+              registerForm.controls['Name']?.touched && registerForm.controls['Name'].errors?.['required']"
+          >Required</em
+        >
+      <input
+      formControlName="Name"
+        type="text"
+        id="Name"
+        class="fadeIn second"
+        name="Name"
+        placeholder="Name..."
+      />
+     </div>
+     <div class="form-group">
+        <em
+          *ngIf="registerForm.controls['Email']?.invalid &&
+              registerForm.controls['Email']?.touched && registerForm.controls['Email'].errors?.['required']"
+          >Required</em
+        >
+        <em
+          *ngIf="registerForm.controls['Email']?.invalid &&
+              registerForm.controls['Email']?.touched && registerForm.controls['Email'].errors?.['email']"
+          >You must could write email format</em
+        >
+      <input
+        formControlName="Email"
+        type="text"
+        id="Email"
+        class="fadeIn second"
+        name="Email"
+        placeholder="Email..."
+      />
+     </div>
+      <div class="form-group">
+        <em
+          *ngIf="registerForm.controls['userName']?.invalid &&
+              registerForm.controls['userName']?.touched && registerForm.controls['userName'].errors?.['required']"
+          >Required</em
+        >
+        <em
+          *ngIf="registerForm.controls['userName']?.invalid &&
+              registerForm.controls['userName']?.touched && registerForm.controls['userName'].errors?.['pattern']"
+        >
+          <br />Must start with a letter
+        </em>
+        <em
+          *ngIf="registerForm.controls['userName']?.invalid &&
+              registerForm.controls['userName']?.touched && registerForm.controls['userName'].errors?.['maxlenght']"
+        >
+          <br />
+          Username can be up to 20 characters</em
+        >
+        <em
+          *ngIf="registerForm.controls['userName']?.invalid &&
+              registerForm.controls['userName']?.touched && registerForm.controls['userName'].errors?.['minlength']"
+        >
+          <br />Username can be at least 4 characters</em
+        >
+        <input
+          type="text"
+          id="username"
+          class="fadeIn second"
+          name="username"
+          placeholder="Username..."
+          formControlName="userName"
+        />
+      </div>
+      <div class="form-group">
+        <em
+          *ngIf="registerForm.controls['password']?.invalid &&
+              registerForm.controls['password']?.touched  && registerForm.controls['password'].errors?.['required']"
+          >Required</em
+        >
+        <em
+          *ngIf="registerForm.controls['password']?.invalid &&
+              registerForm.controls['password']?.touched && registerForm.controls['password'].errors?.['minlength']"
+        >
+          <br />Password can be at least 4 characters</em
+        >
+        <input
+          formControlName="password"
+          type="password"
+          id="password"
+          class="fadeIn third password"
+          name="passowrd"
+          placeholder="Password..."
+        />
+      </div>
+      <button type="submit" class="btn btn-secondary" value="Login">
+        Register
+      </button>
     </form>
 
-    <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" [routerLink]="['/login']">Do you have an account? Log in</a>
+      <a class="underlineHover" [routerLink]="['/login']"
+        >Do you have an account? Log in</a
+      >
     </div>
-
   </div>
 </div>

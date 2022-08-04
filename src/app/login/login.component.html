@@ -40,7 +40,7 @@
           type="text"
           id="userName"
           class="form-control"
-          placeholder="username..."
+          placeholder="Username..."
         />
       </div>
       <div class="form-group">
@@ -53,7 +53,7 @@
           *ngIf="loginForm.controls['password']?.invalid &&
               loginForm.controls['password']?.touched && loginForm.controls['password'].errors?.['minlength']"
         >
-          <br />Username can be at least 4 characters</em
+          <br />Password can be at least 4 characters</em
         >
         <input
           formControlName="password"
