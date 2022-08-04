@@ -4,6 +4,7 @@ import { Router} from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { IUser } from '../auth/user.model';
 import { ToastrService } from 'ngx-toastr';
+import { LoginGuard } from './loginGuard';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private route: Router,
     private formBuilder: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private guard:LoginGuard
   ) {}
 
   ngOnInit() {
@@ -35,14 +37,17 @@ export class LoginComponent implements OnInit {
   }
 
   login(formValues: IUser) {
+
+   this.authService.isloginUser = true;
     if (this.loginForm.valid) {
       this.authService
         .loginUser(formValues.userName, formValues.password)
         .subscribe((resp) => {
           if (resp == false) {
             this.toastr.warning('Incorrect username or password');
-          } else {
-            this.route.navigate(['/dashboard'])
+          }
+          else{
+              this.route.navigate(['dashboard']);
           }
         });
     }

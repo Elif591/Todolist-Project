@@ -4,11 +4,16 @@ import { CreatetaskComponent } from './createtask/createtask.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginGuard } from './login/loginGuard';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [LoginGuard]
+  },
   { path: 'newtask', component: CreatetaskComponent },
   { path: '', redirectTo: '/register', pathMatch: 'full' },
 ];

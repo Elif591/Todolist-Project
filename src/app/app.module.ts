@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule} from 'ngx-toastr';
 import { ToastrService } from 'ngx-toastr';
+import { LoginGuard } from './login/loginGuard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,7 @@ import { ToastrService } from 'ngx-toastr';
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [AuthService, ToastrService],
+  providers: [AuthService, ToastrService , LoginGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
