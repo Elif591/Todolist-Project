@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { IUser } from '../auth/user.model';
 import { ToastrService } from 'ngx-toastr';
+import { HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,17 +12,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  decode:string
+  decode: string;
   constructor(
     private authService: AuthService,
     private route: Router,
     private formBuilder: FormBuilder,
-    private toastr: ToastrService,
-
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
     this.loginForm = this.formBuilder.group({
       userName: [
         '',
@@ -41,15 +41,16 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService
         .loginUser(formValues.userName, formValues.password)
-        .subscribe((response) => {
-          if (!response) {
-            this.toastr.warning('Incorrect username or password');
-          } else {
+        .subscribe(
+          (response) => {
             localStorage.setItem('token', response.token);
-
             this.route.navigate(['dashboard']);
+          },
+          (error) => {
+            this.toastr.warning('Incorrect username or password');
+            console.log(error);
           }
-        });
+        );
     }
   }
 }

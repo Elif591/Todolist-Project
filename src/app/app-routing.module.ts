@@ -5,11 +5,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginGuard } from './login/loginGuard';
+import { DashboardGuard } from './dashboard/DashboardGuard';
+
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [DashboardGuard] },
   {
     path: 'register',
-    component: RegisterComponent,
+    component: RegisterComponent,canActivate: [DashboardGuard]
   },
   {
     path: 'dashboard',

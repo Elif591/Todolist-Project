@@ -29,10 +29,9 @@ export class AuthService {
       .post(environment.apiUrlLogin, loginInfo, options)
       .pipe(
         tap((data: any) => {
-          this.currentUser = <IUser>data['user'];
+          console.log(data)
         })
       );
-    this.isloginUser = true;
     return response;
   }
 
