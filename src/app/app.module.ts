@@ -11,11 +11,13 @@ import { MonthlyListComponent } from './monthly-list/monthly-list.component';
 import { CreatetaskComponent } from './createtask/createtask.component';
 import { AuthService  } from './auth/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule} from 'ngx-toastr';
 import { ToastrService } from 'ngx-toastr';
 import { LoginGuard } from './login/loginGuard';
+import { DashboardGuard } from '../app/dashboard/DashboardGuard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,7 @@ import { LoginGuard } from './login/loginGuard';
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [AuthService, ToastrService , LoginGuard],
+  providers: [AuthService, ToastrService, LoginGuard, DashboardGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -46,7 +46,7 @@ h2 {
   border-radius: 10px 10px 10px 10px;
   background: #fff;
   padding: 30px;
-  width: 85rem;
+  width: 65rem;
   position: relative;
   padding: 0px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
@@ -265,14 +265,17 @@ textarea[type=textarea]:placeholder {
   background-color: #56baed;
   content: "";
   transition: width 0.2s;
+   cursor: pointer;
 }
 
 .underlineHover:hover {
   color: #0d0d0d;
+   cursor: pointer;
 }
 
 .underlineHover:hover:after{
   width: 100%;
+   cursor: pointer;
 }
 
 
@@ -285,4 +288,9 @@ textarea[type=textarea]:placeholder {
 
 #icon {
   width:60%;
+}
+em {
+  float:center;
+  color:#E05C65;
+  padding-left:1rem;
 }

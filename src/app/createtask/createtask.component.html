@@ -1,20 +1,64 @@
-<div class="wrapper fadeInDown">
+<app-nav-bar></app-nav-bar>
+<div class="wrapper fadeInDown" style="margin-top: 7rem;">
   <div id="formContent">
-
-   <div class="fadeIn first" style="margin-top: 2rem;">
-    <a class="underlineHover" >Create new Task</a>
+    <div class="fadeIn first" style="margin-top: 2rem">
+      <a class="underlineHover">Create new Task</a>
     </div>
 
-    <form style="margin-top: 2rem;">
-      <input type="text" id="TaskTitle" class="fadeIn second" name="TaskTitle" placeholder="TaskTitle">
-      <textarea type="textarea" id="Explanation" class="fadeIn second" name="Explanation" placeholder="Explanation"></textarea>
-      <textarea type="textarea" id="Note" class="fadeIn third password" name="Note" placeholder="Note"></textarea>
-      <input type="submit" class="fadeIn fourth" value="Create new task" [routerLink]="['/dashboard']">
+    <form
+      [formGroup]="createTaskForm"
+      (ngSubmit)="createTask(createTaskForm.value)"
+      autocomplete="off"
+      novalidate
+      style="margin-top: 2rem"
+    >
+      <div class="form-group">
+        <em
+          *ngIf="createTaskForm.controls['TaskTitle']?.invalid &&
+              createTaskForm.controls['TaskTitle']?.dirty && createTaskForm.controls['TaskTitle'].errors?.['required']"
+          >Required</em
+        >
+      </div>
+      <input
+        type="text"
+        id="TaskTitle"
+        class="fadeIn second"
+        name="TaskTitle"
+        placeholder="Title..."
+        formControlName="TaskTitle"
+      />
+
+      <div class="form-group">
+        <em
+          *ngIf="createTaskForm.controls['Explanation']?.invalid &&
+                createTaskForm.controls['Explanation']?.dirty && createTaskForm.controls['Explanation'].errors?.['required']"
+          >Required</em
+        >
+      </div>
+      <textarea
+        type="textarea"
+        id="Explanation"
+        class="fadeIn second"
+        name="Explanation"
+        placeholder="Explanation..."
+        formControlName="Explanation"
+      ></textarea>
+
+      <textarea
+        type="textarea"
+        id="Note"
+        class="fadeIn third password"
+        name="Note"
+        placeholder="Note..."
+        formControlName="Note"
+      ></textarea>
+      <input
+        type="submit"
+        class="fadeIn fourth"
+        value="Create new task"
+      />
     </form>
 
-    <div id="formFooter">
-    </div>
-
+    <div id="formFooter"></div>
   </div>
 </div>
-
