@@ -1,4 +1,5 @@
-<div class="wrapper fadeInDown">
+<app-nav-bar></app-nav-bar>
+<div class="wrapper fadeInDown" style="margin-top: 7rem;">
   <div id="formContent">
     <div class="fadeIn first" style="margin-top: 2rem">
       <a class="underlineHover">Create new Task</a>
@@ -43,13 +44,6 @@
         formControlName="Explanation"
       ></textarea>
 
-      <div class="form-group">
-        <em
-          *ngIf="createTaskForm.controls['Note']?.invalid &&
-                createTaskForm.controls['Note']?.dirty && createTaskForm.controls['Note'].errors?.['required']"
-          >Required</em
-        >
-      </div>
       <textarea
         type="textarea"
         id="Note"
@@ -58,7 +52,6 @@
         placeholder="Note..."
         formControlName="Note"
       ></textarea>
-
       <input
         type="submit"
         class="fadeIn fourth"

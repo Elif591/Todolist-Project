@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+     localStorage.removeItem('token');
     this.registerForm = this.formBuilder.group({
       Name: ['', [Validators.required, Validators.pattern('[a-zA-Z].*')]],
       Email: ['', [Validators.required, Validators.email]],

@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    localStorage.removeItem('token')
     this.loginForm = this.formBuilder.group({
       userName: [
         '',
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
             this.toastr.warning('Incorrect username or password');
           } else {
             localStorage.setItem('token', response.token);
+
             this.route.navigate(['dashboard']);
           }
         });

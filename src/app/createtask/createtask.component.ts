@@ -33,7 +33,7 @@ export class CreatetaskComponent implements OnInit {
     this.createTaskForm = this.formBuilder.group({
       TaskTitle: ['', [Validators.required]],
       Explanation: ['', [Validators.required]],
-      Note: ['', [Validators.required]],
+      Note: [''],
     });
   }
 
@@ -56,4 +56,5 @@ export class CreatetaskComponent implements OnInit {
         });
     }
   }
+
 }

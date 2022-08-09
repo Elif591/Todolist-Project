@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand">Dashboard</a>
+    <button class="navbar-brand btn btn-dark" [routerLink]="['/dashboard']">Dashboard</button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link">Welcome Username</a>
+          <a class="nav-link" id="WelcomeUsername">Welcome {{userName}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/newtask']" >Create task </a>
+          <button class="btn btn-dark" [routerLink]="['/newtask']" >Create task </button>
         </li>
       </ul>
     </div>
@@ -27,7 +27,7 @@
     </button>
     <ul class="navbar-nav" style="margin-left: 5rem;">
       <li class="nav-item">
-        <a class="nav-link" (click)="logout()">Log out</a>
+        <button class="btn btn-dark" (click)="logout()">Log out</button>
       </li>
     </ul>
   </div>
