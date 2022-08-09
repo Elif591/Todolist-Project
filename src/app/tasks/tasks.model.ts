@@ -1,8 +1,8 @@
 export interface ITask {
   id?: number;
-  TaskTitle: any;
-  Explanation: any;
-  Note: any;
+  TaskTitle: string;
+  Explanation: string;
+  Note: string;
   StartDate?: Date;
   FinishDate?: Date;
   Priorty?: boolean;

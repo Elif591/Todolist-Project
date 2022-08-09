@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
           },
           (error) => {
             this.toastr.warning('Incorrect username or password');
-            console.log(error);
           }
         );
     }

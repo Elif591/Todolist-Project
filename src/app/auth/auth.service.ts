@@ -29,7 +29,6 @@ export class AuthService {
       .post(environment.apiUrlLogin, loginInfo, options)
       .pipe(
         tap((data: any) => {
-          console.log(data)
         })
       );
     return response;
@@ -61,9 +60,9 @@ export class AuthService {
   }
 
   createNewTask(
-    _TaskTitle: any,
-    _Explanation: any,
-    _Note: any,
+    _TaskTitle: string,
+    _Explanation: string,
+    _Note: string,
     _UserId: number
   ) {
     let loginInfo = {
