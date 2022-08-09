@@ -12,9 +12,13 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [LoginGuard]
+    canActivate: [LoginGuard],
   },
-  { path: 'newtask', component: CreatetaskComponent },
+  {
+    path: 'newtask',
+    component: CreatetaskComponent,
+    canActivate: [LoginGuard],
+  },
   { path: '', redirectTo: '/register', pathMatch: 'full' },
 ];
 

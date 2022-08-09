@@ -286,3 +286,8 @@ textarea[type=textarea]:placeholder {
 #icon {
   width:60%;
 }
+em {
+  float:center;
+  color:#E05C65;
+  padding-left:1rem;
+}
