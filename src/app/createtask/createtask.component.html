@@ -14,24 +14,24 @@
     >
       <div class="form-group">
         <em
-          *ngIf="createTaskForm.controls['TaskTitle']?.invalid &&
-              createTaskForm.controls['TaskTitle']?.dirty && createTaskForm.controls['TaskTitle'].errors?.['required']"
+          *ngIf="createTaskForm.controls['taskTitle']?.invalid &&
+              createTaskForm.controls['taskTitle']?.dirty && createTaskForm.controls['taskTitle'].errors?.['required']"
           >Required</em
         >
       </div>
       <input
         type="text"
-        id="TaskTitle"
+        id="taskTitle"
         class="fadeIn second"
-        name="TaskTitle"
+        name="taskTitle"
         placeholder="Title..."
-        formControlName="TaskTitle"
+        formControlName="taskTitle"
       />
 
       <div class="form-group">
         <em
-          *ngIf="createTaskForm.controls['Explanation']?.invalid &&
-                createTaskForm.controls['Explanation']?.dirty && createTaskForm.controls['Explanation'].errors?.['required']"
+          *ngIf="createTaskForm.controls['explanation']?.invalid &&
+                createTaskForm.controls['explanation']?.dirty && createTaskForm.controls['explanation'].errors?.['required']"
           >Required</em
         >
       </div>
@@ -41,7 +41,7 @@
         class="fadeIn second"
         name="Explanation"
         placeholder="Explanation..."
-        formControlName="Explanation"
+        formControlName="explanation"
       ></textarea>
 
       <textarea
@@ -50,12 +50,13 @@
         class="fadeIn third password"
         name="Note"
         placeholder="Note..."
-        formControlName="Note"
+        formControlName="note"
       ></textarea>
       <input
         type="submit"
         class="fadeIn fourth"
         value="Create new task"
+        [disabled]="!createTaskForm.valid"
       />
     </form>
 

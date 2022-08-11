@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IUser } from './user.model';
-import {  tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import jwt_decode from 'jwt-decode';
+import { ITask } from '../tasks/tasks.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,10 +28,7 @@ export class AuthService {
     };
     let response = this.http
       .post(environment.apiUrlLogin, loginInfo, options)
-      .pipe(
-        tap((data: any) => {
-        })
-      );
+      .pipe(tap((data: any) => {}));
     return response;
   }
 
@@ -75,8 +73,11 @@ export class AuthService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
 
-    let response = this.http
-      .post(environment.apiUrlNewTask, loginInfo, options);
+    let response = this.http.post(
+      environment.apiUrlNewTask,
+      loginInfo,
+      options
+    );
 
     return response;
   }
@@ -88,4 +89,24 @@ export class AuthService {
   DecodeToken(token: any): string {
     return jwt_decode(token);
   }
+
+  AllTasks(_userId: number) {
+    let loginInfo = {
+      userId: _userId,
+    };
+    let options = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+
+    let response = this.http.post<ITask[]>(
+      environment.apiUrlAllTask,
+      loginInfo,
+      options
+    );
+
+    return response;
+  }
+
+
 }
+

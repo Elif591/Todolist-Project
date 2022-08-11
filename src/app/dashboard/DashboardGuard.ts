@@ -21,7 +21,7 @@ export class DashboardGuard implements CanActivate {
     let logged = !!localStorage.getItem('token');
     if (logged) {
       this.router.navigate(['dashboard']);
-      this.toastr.error('hata');
+      this.toastr.error('Fail');
     } else {
       return true;
     }
