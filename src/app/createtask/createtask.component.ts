@@ -24,28 +24,28 @@ export class CreatetaskComponent implements OnInit {
   ) {}
 
   createTaskForm: FormGroup;
-  TaskTitle: FormControl;
-  Explanation: FormControl;
-  Note: FormControl;
+  taskTitle: FormControl;
+  explanation: FormControl;
+  note: FormControl;
   task: ITask;
 
   ngOnInit(): void {
     this.createTaskForm = this.formBuilder.group({
-      TaskTitle: ['', [Validators.required]],
-      Explanation: ['', [Validators.required]],
-      Note: [''],
+      taskTitle: ['', [Validators.required]],
+      explanation: ['', [Validators.required]],
+      note: [''],
     });
   }
 
   createTask(formValues: ITask) {
-      let data = localStorage.getItem('token');
-      let decoded = this.authservice.DecodeToken(data);
+    let data = localStorage.getItem('token');
+    let decoded = this.authservice.DecodeToken(data);
     if (this.createTaskForm.valid) {
       this.authservice
         .createNewTask(
-          formValues.TaskTitle,
-          formValues.Explanation,
-          formValues.Note,
+          formValues.taskTitle,
+          formValues.explanation,
+          formValues.note,
           Number(decoded.sub.toString())
         )
         .subscribe((resp) => {
@@ -56,5 +56,4 @@ export class CreatetaskComponent implements OnInit {
         });
     }
   }
-
 }

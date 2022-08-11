@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { IUser } from '../auth/user.model';
 import { ToastrService } from 'ngx-toastr';
-import { HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -43,7 +42,7 @@ export class LoginComponent implements OnInit {
         .loginUser(formValues.userName, formValues.password)
         .subscribe(
           (response) => {
-            localStorage.setItem('token', response.token);
+            localStorage.setItem('token', response['token']);
             this.route.navigate(['dashboard']);
           },
           (error) => {

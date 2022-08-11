@@ -1,11 +1,15 @@
+
 export interface ITask {
-  id?: number;
-  TaskTitle: string;
-  Explanation: string;
-  Note: string;
-  StartDate?: Date;
-  FinishDate?: Date;
-  Priorty?: boolean;
-  Complated?: boolean;
+  taskId?: number;
+  taskTitle: string;
+  explanation: string;
+  note: string;
+  startDate?: string;
+  finishDate?: string;
+  priority?: boolean;
+  completed?: boolean;
   UserId: number;
 }
+
+
+
