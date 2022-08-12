@@ -70,9 +70,9 @@ export class NavBarComponent implements OnInit {
       this.detailmodal(this.taskId);
     }
 
-       detailmodal(_taskId : number){
+       detailmodal(taskId : number){
       this.task=new Array<ITask>;
-       this.task.push(this.tasks.find((x) => x.taskId == _taskId))
+       this.task.push(this.tasks.find((x) => x.taskId == taskId))
 
         this.task.forEach((x => {
          this.tasktitle = x.taskTitle

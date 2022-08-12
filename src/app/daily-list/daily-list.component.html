@@ -6,6 +6,7 @@
       <p *ngIf="task.note" class="card-text">Note : {{ task.note }}</p>
     </div>
     <div class="card-header">
+
       <button
         type="button"
         class="btn btn-warning"
@@ -14,6 +15,15 @@
         (click)="dailymodal(task.taskId)"
       >
         Details
+      </button>
+        <button
+        style="float: right;"
+        type="button"
+        class="btn btn-danger"
+        (click)="dailydelete(task.taskId)"
+
+      >
+        Delete
       </button>
     </div>
 
