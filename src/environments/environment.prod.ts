@@ -4,5 +4,6 @@ export const environment = {
   apiUrlRegister: 'https://localhost:44320/api/users/register',
   apiUrlNewTask: 'https://localhost:44320/api/tasks/newtask',
   apiUrlAllTask: 'https://localhost:44320/api/tasks/alltask',
-  apiUrlSearchtask: 'https://localhost:44320/api/tasks/searchtask',
+  apiUrlSearchTask: 'https://localhost:44320/api/tasks/searchtask',
+  apiUrlDeleteTask: 'https://localhost:44320/api/tasks/deletetask',
 };

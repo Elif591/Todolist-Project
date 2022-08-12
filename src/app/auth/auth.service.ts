@@ -105,10 +105,24 @@ export class AuthService {
   }
 
   Searchtasks(_userId: number , searchTerm : string) {
-       return this.http.get<ITask[]>(environment.apiUrlSearchtask + '?_userId=' + _userId + '&searchTerm=' + searchTerm)
+       return this.http.get<ITask[]>(environment.apiUrlSearchTask + '?_userId=' + _userId + '&searchTerm=' + searchTerm)
 
   }
 
+  DeleteTask(_taskId:number){
+       let loginInfo = {
+         taskId: _taskId,
+       };
+       let options = {
+         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+       };
 
+       let response = this.http.post(
+         environment.apiUrlDeleteTask,
+         loginInfo,
+         options
+       );
+      return response;
+  }
 }
 

@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ITask } from '../tasks/tasks.model';
 import { AuthService } from '../auth/auth.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { routes } from '../app-routing.module';
 
 @Component({
   selector: 'app-daily-list',
@@ -10,7 +12,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 })
 export class DailyListComponent implements OnInit {
 
-  constructor( private authservice:AuthService , private toastr:ToastrService) { }
+  constructor( private authservice:AuthService , private toastr:ToastrService , private router : Router ) { }
   @Input() tasks = new Array<ITask>;
    task = new Array<ITask>;
    tasktitle : string;
@@ -34,5 +36,14 @@ export class DailyListComponent implements OnInit {
       }))
      }}
 
+     dailydelete(_taskId : number){
+        this.authservice.DeleteTask(_taskId).subscribe((response) => {
+            if(response != false){
 
+                this.toastr.warning('Delete task');
+                window.location.reload();
+            }
+        })
+
+     }
 }

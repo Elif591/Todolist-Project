@@ -3,7 +3,9 @@
   <div id="formContent">
     <div class="fadeIn first" style="margin-top: 2rem">
       <a class="underlineHover">Create new Task</a>
-    </div>
+
+
+      </div>
 
     <form
       [formGroup]="createTaskForm"
@@ -15,7 +17,7 @@
       <div class="form-group">
         <em
           *ngIf="createTaskForm.controls['taskTitle']?.invalid &&
-              createTaskForm.controls['taskTitle']?.dirty && createTaskForm.controls['taskTitle'].errors?.['required']"
+              createTaskForm.controls['taskTitle']?.touched && createTaskForm.controls['taskTitle'].errors?.['required']"
           >Required</em
         >
       </div>
@@ -31,7 +33,7 @@
       <div class="form-group">
         <em
           *ngIf="createTaskForm.controls['explanation']?.invalid &&
-                createTaskForm.controls['explanation']?.dirty && createTaskForm.controls['explanation'].errors?.['required']"
+                createTaskForm.controls['explanation']?.touched && createTaskForm.controls['explanation'].errors?.['required']"
           >Required</em
         >
       </div>
@@ -56,10 +58,10 @@
         type="submit"
         class="fadeIn fourth"
         value="Create new task"
-        [disabled]="!createTaskForm.valid"
       />
     </form>
-
+      <a class="underlineHover" [routerLink]="['/dashboard']">Go Back</a>
     <div id="formFooter"></div>
+
   </div>
 </div>
