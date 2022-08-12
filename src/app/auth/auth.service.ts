@@ -26,8 +26,7 @@ export class AuthService {
     let options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
-    let response = this.http
-      .post(environment.apiUrlLogin, loginInfo, options)
+    let response = this.http.post(environment.apiUrlLogin, loginInfo, options);
     return response;
   }
 
@@ -46,8 +45,11 @@ export class AuthService {
     let options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
-    let response = this.http
-      .post(environment.apiUrlRegister, loginInfo, options)
+    let response = this.http.post(
+      environment.apiUrlRegister,
+      loginInfo,
+      options
+    );
 
     return response;
   }
@@ -100,6 +102,11 @@ export class AuthService {
     );
 
     return response;
+  }
+
+  Searchtasks(_userId: number , searchTerm : string) {
+       return this.http.get<ITask[]>(environment.apiUrlSearchtask + '?_userId=' + _userId + '&searchTerm=' + searchTerm)
+
   }
 
 

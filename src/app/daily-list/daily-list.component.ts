@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ITask } from '../tasks/tasks.model';
 import { AuthService } from '../auth/auth.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-daily-list',
@@ -9,7 +10,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class DailyListComponent implements OnInit {
 
-  constructor( private authservice:AuthService) { }
+  constructor( private authservice:AuthService , private toastr:ToastrService) { }
   @Input() tasks = new Array<ITask>;
    task = new Array<ITask>;
    tasktitle : string;
@@ -21,7 +22,7 @@ export class DailyListComponent implements OnInit {
 
   }
    dailymodal(_taskId : number){
-      this.task=new Array<ITask>;
+    this.task=new Array<ITask>;
     this.task.push(this.tasks.find((x) => x.taskId == _taskId))
     if(this.task !=null){
       this.task.forEach((x => {
@@ -32,4 +33,6 @@ export class DailyListComponent implements OnInit {
          this.complated = x.completed
       }))
      }}
+
+
 }

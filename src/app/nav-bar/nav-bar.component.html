@@ -1,34 +1,152 @@
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <button class="navbar-brand btn btn-dark" [routerLink]="['/dashboard']">Dashboard</button>
+    <button class="navbar-brand btn btn-dark" [routerLink]="['/dashboard']">
+      Dashboard
+    </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" id="WelcomeUsername">Welcome {{userName}}</a>
+          <a class="nav-link" id="WelcomeUsername">Welcome {{ userName }}</a>
         </li>
         <li class="nav-item">
-          <button class="btn btn-dark" [routerLink]="['/newtask']" >Create task </button>
+          <button class="btn btn-dark" [routerLink]="['/newtask']">
+            Create task
+          </button>
         </li>
       </ul>
     </div>
+
     <div class="container col-sm-3">
-      <form class="form-inline my-2 my-lg-0">
+
+      <form
+        class="form-inline my-2 my-lg-0"
+        id="searchForm"
+        (ngSubmit)="searchTasks(searchTerm)"
+        class="navbar-form navbar-right"
+      >
+      <div class="container">
         <input
           class="form-control mr-sm-2"
           type="search"
           placeholder="Search.."
           aria-label="Search"
+          [(ngModel)]="searchTerm"
+          name="searchTerm"
+          id="searchTerm"
         />
+      </div>
+      <div class="container" >
+        <button
+          class="btn btn-success my-2 my-sm-0"
+          type="submit"
+          data-bs-toggle="modal"
+          data-bs-target="#searchModal"
+        >
+          <i class="fa fa-search"></i>
+        </button>
+        </div>
       </form>
     </div>
-    <button class="btn btn-success my-2 my-sm-0" type="submit">
-      <i class="fa fa-search"></i>
-    </button>
-    <ul class="navbar-nav" style="margin-left: 5rem;">
+
+    <ul class="navbar-nav" style="margin-left: 5rem">
       <li class="nav-item">
         <button class="btn btn-dark" (click)="logout()">Log out</button>
       </li>
     </ul>
   </div>
+
+
+
+  <div
+    class="modal"
+    id="searchModal"
+    tabindex="-1"
+    aria-labelledby="searchModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchModalLabel">Tasks</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="searchdelete()"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <ul
+            class="list-group list-group-flush"
+            *ngFor="let task of foundTasks"
+          >
+            <button
+              class="list-group-item list-group-item-action list-group-item-info btn btn-secondary"
+              data-bs-dismiss="modal"
+              data-bs-toggle="modal"
+              data-bs-target="#detailModal"
+              (click)="routertask(task)"
+              (click)="searchdelete()"
+            >
+              {{ task }}
+            </button>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            (click)="searchdelete()"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
+
+
+
+   <div
+    class="modal fade"
+    id="detailModal"
+    tabindex="-1"
+    aria-labelledby="detailModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailModalLabel">{{tasktitle}}</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p class="card-text">{{explanation}}</p>
+          <p class="card-text">{{note}}</p>
+          <p class="card-text">Start date : {{startDate | date :'short' }}</p>
+          <p *ngIf="!complated" class="card-text">Not completed</p>
+           <p *ngIf="complated" class="card-text">Completed</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
