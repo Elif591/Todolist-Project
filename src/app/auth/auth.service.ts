@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IUser } from './user.model';
-import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import jwt_decode from 'jwt-decode';
 import { ITask } from '../tasks/tasks.model';
@@ -18,10 +17,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  loginUser(_userName: string, _password: string) {
+  loginUser(userName: string, password: string) {
     let loginInfo = {
-      userName: _userName,
-      password: _password,
+      userName: userName,
+      password: password,
     };
     let options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -31,16 +30,16 @@ export class AuthService {
   }
 
   registerUser(
-    _Name: string,
-    _Email: string,
-    _userName: string,
-    _password: string
+    Name: string,
+    Email: string,
+    userName: string,
+    password: string
   ) {
     let loginInfo = {
-      Name: _Name,
-      Email: _Email,
-      userName: _userName,
-      password: _password,
+      Name: Name,
+      Email: Email,
+      userName: userName,
+      password: password,
     };
     let options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -55,16 +54,16 @@ export class AuthService {
   }
 
   createNewTask(
-    _TaskTitle: string,
-    _Explanation: string,
-    _Note: string,
-    _UserId: number
+    TaskTitle: string,
+    Explanation: string,
+    Note: string,
+    UserId: number
   ) {
     let loginInfo = {
-      TaskTitle: _TaskTitle,
-      Explanation: _Explanation,
-      Note: _Note,
-      UserId: _UserId,
+      TaskTitle: TaskTitle,
+      Explanation: Explanation,
+      Note: Note,
+      UserId: UserId,
     };
     let options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -87,9 +86,9 @@ export class AuthService {
     return jwt_decode(token);
   }
 
-  AllTasks(_userId: number) {
+  AllTasks(userId: number) {
     let loginInfo = {
-      userId: _userId,
+      userId: userId,
     };
     let options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -109,9 +108,9 @@ export class AuthService {
 
   }
 
-  DeleteTask(_taskId:number){
+  DeleteTask(taskId:number){
        let loginInfo = {
-         taskId: _taskId,
+         taskId: taskId,
        };
        let options = {
          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

@@ -23,9 +23,9 @@ export class DailyListComponent implements OnInit {
   ngOnInit(): void {
 
   }
-   dailymodal(_taskId : number){
+   dailymodal(taskId : number){
     this.task=new Array<ITask>;
-    this.task.push(this.tasks.find((x) => x.taskId == _taskId))
+    this.task.push(this.tasks.find((x) => x.taskId == taskId))
     if(this.task !=null){
       this.task.forEach((x => {
          this.tasktitle = x.taskTitle
@@ -36,8 +36,8 @@ export class DailyListComponent implements OnInit {
       }))
      }}
 
-     dailydelete(_taskId : number){
-        this.authservice.DeleteTask(_taskId).subscribe((response) => {
+     dailydelete(taskId : number){
+        this.authservice.DeleteTask(taskId).subscribe((response) => {
             if(response != false){
 
                 this.toastr.warning('Delete task');

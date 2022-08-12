@@ -20,8 +20,8 @@ export class MonthlyListComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  monthlymodal(_taskId : number){
-     this.task.push(this.tasks.find((x) => x.taskId == _taskId))
+  monthlymodal(taskId : number){
+     this.task.push(this.tasks.find((x) => x.taskId == taskId))
     if(this.task !=null){
       this.task.forEach((x => {
          this.tasktitle = x.taskTitle
