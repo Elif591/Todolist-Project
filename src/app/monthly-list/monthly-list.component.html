@@ -36,7 +36,7 @@
         <div class="modal-body">
           <p class="card-text">{{explanation}}</p>
           <p class="card-text">{{note}}</p>
-          <p class="card-text">Start date : {{startDate}}</p>
+          <p class="card-text">Start date : {{startDate | date :'short' }}</p>
           <p *ngIf="!complated" class="card-text">Not completed</p>
            <p *ngIf="complated" class="card-text">Completed</p>
         </div>

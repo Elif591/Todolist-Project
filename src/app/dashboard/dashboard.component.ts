@@ -20,11 +20,9 @@ export class DashboardComponent implements OnInit {
     let data = localStorage.getItem('token');
     let decoded = this.authservice.DecodeToken(data);
     this.authservice.AllTasks(Number(decoded.sub)).subscribe((resp) => {
-
-      if (resp != null) {
+     if (resp != null) {
         resp.forEach((task=>{
         this.tasks.push(task)
-
        }))
       }
     });
