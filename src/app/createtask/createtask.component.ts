@@ -56,4 +56,10 @@ export class CreatetaskComponent implements OnInit {
         });
     }
   }
+
+  inputControl() {
+    if (!this.createTaskForm.valid) {
+       this.toastr.warning('Do not title or explanation invalid');
+    }
+  }
 }

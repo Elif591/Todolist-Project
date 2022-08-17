@@ -20,7 +20,8 @@ export class NavBarComponent implements OnInit {
    explanation : string;
    note : string;
    startDate : string;
-   complated : boolean;
+   finishDate : string;
+   completed : boolean;
   ngOnInit(): void {
     let data = localStorage.getItem('token');
     let decoded = this.authService.DecodeToken(data);
@@ -70,7 +71,7 @@ export class NavBarComponent implements OnInit {
       this.detailmodal(this.taskId);
     }
 
-       detailmodal(taskId : number){
+     detailmodal(taskId : number){
       this.task=new Array<ITask>;
        this.task.push(this.tasks.find((x) => x.taskId == taskId))
 
@@ -79,7 +80,8 @@ export class NavBarComponent implements OnInit {
          this.explanation = x.explanation
          this.note = x.note
          this.startDate = x.startDate
-         this.complated = x.completed
+         this.completed = x.completed
+         this.finishDate = x.finishDate
       }))
      }
 

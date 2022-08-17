@@ -1,5 +1,8 @@
-<div style="margin-top: 3rem; margin-bottom: 25rem">
-  <div class="card text-white bg-secondary mb-3" *ngFor="let task of tasks">
+<div class="monthlyList" >
+  <div *ngFor="let task of tasks" >
+  <div  [ngClass]="
+      (task.completed == true)?'card text-white bg-success mb-3':'card text-white bg-secondary mb-3'
+    " *ngIf="!task.completed" >
     <div class="card-body">
       <h5 class="card-title">{{ task.taskTitle }}</h5>
     </div>
@@ -37,8 +40,9 @@
           <p class="card-text">{{explanation}}</p>
           <p class="card-text">{{note}}</p>
           <p class="card-text">Start date : {{startDate | date :'short' }}</p>
-          <p *ngIf="!complated" class="card-text">Not completed</p>
-           <p *ngIf="complated" class="card-text">Completed</p>
+          <p *ngIf="completed" class="card-text">Finish date : {{ finishDate | date: "short" }}</p>
+          <p *ngIf="!completed" class="card-text">Not completed</p>
+          <p *ngIf="completed" class="card-text">Completed</p>
         </div>
         <div class="modal-footer">
           <button
@@ -52,4 +56,66 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+<h5 class="complatedFont">Completed</h5>
+<div  class="monthlyListCompleted">
+  <div *ngFor="let task of tasks">
+  <div    [ngClass]="
+      (task.completed == true)?'card text-white bg-success mb-3':'card text-white bg-secondary mb-3'
+    "  *ngIf="task.completed">
+    <div class="card-body">
+      <h5 class="card-title">{{ task.taskTitle }}</h5>
+    </div>
+    <div class="card-header">
+      <button
+        type="button"
+        class="btn btn-warning"
+        data-bs-toggle="modal"
+        data-bs-target="#monthlyModal"
+        (click)="monthlymodal(task.taskId)"
+      >
+        Details
+      </button>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="monthlyModal"
+    tabindex="-1"
+    aria-labelledby="monthlyModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="monthlyModalLabel">{{tasktitle}}</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p class="card-text">{{explanation}}</p>
+          <p class="card-text">{{note}}</p>
+          <p class="card-text">Start date : {{startDate | date :'short' }}</p>
+          <p *ngIf="completed" class="card-text">Finish date : {{ finishDate | date: "short" }}</p>
+          <p *ngIf="!completed" class="card-text">Not completed</p>
+          <p *ngIf="completed" class="card-text">Completed</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

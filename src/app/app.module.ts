@@ -17,7 +17,7 @@ import { ToastrModule} from 'ngx-toastr';
 import { ToastrService } from 'ngx-toastr';
 import { LoginGuard } from './login/loginGuard';
 import { DashboardGuard } from '../app/dashboard/DashboardGuard';
-
+import { ErrorComponent } from './error/error.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +28,7 @@ import { DashboardGuard } from '../app/dashboard/DashboardGuard';
     RegisterComponent,
     LoginComponent,
     DailyListComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
