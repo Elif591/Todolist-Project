@@ -183,6 +183,7 @@ textarea[type=textarea]:placeholder {
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+  margin-top: 7rem;
 }
 
 @-webkit-keyframes fadeInDown {
@@ -235,6 +236,7 @@ textarea[type=textarea]:placeholder {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;
+  margin-top: 2rem;
 }
 
 .fadeIn.second {
@@ -293,4 +295,7 @@ em {
   float:center;
   color:#E05C65;
   padding-left:1rem;
+}
+.form{
+  margin-top: 2rem;
 }

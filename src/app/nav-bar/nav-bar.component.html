@@ -50,7 +50,7 @@
       </form>
     </div>
 
-    <ul class="navbar-nav" style="margin-left: 5rem">
+    <ul class="navbar-nav navbarItem">
       <li class="nav-item">
         <button class="btn btn-dark" (click)="logout()">Log out</button>
       </li>
@@ -58,7 +58,7 @@
   </div>
 
   <div
-    class="modal"
+    class="modal fadeIn"
     id="searchModal"
     tabindex="-1"
     aria-labelledby="searchModalLabel"
@@ -130,8 +130,9 @@
         <p class="card-text">{{ explanation }}</p>
         <p class="card-text">{{ note }}</p>
         <p class="card-text">Start date : {{ startDate | date: "short" }}</p>
-        <p *ngIf="!complated" class="card-text">Not completed</p>
-        <p *ngIf="complated" class="card-text">Completed</p>
+         <p *ngIf="completed" class="card-text">Finish date : {{ finishDate | date: "short" }}</p>
+        <p *ngIf="!completed" class="card-text">Not completed</p>
+        <p *ngIf="completed" class="card-text">Completed</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

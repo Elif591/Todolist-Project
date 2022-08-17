@@ -1,14 +1,14 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
-     <div style="margin-bottom: -4rem">
+     <div class="register" >
       <h2>Register</h2>
     </div>
     <form
+    class="form"
       [formGroup]="registerForm"
       (ngSubmit)="register(registerForm.value)"
       autocomplete="off"
       novalidate
-      style="margin-top: 5rem"
     >
      <div class="form-group">
         <em

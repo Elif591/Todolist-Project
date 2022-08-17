@@ -1,0 +1,19 @@
+.dailylist{
+  margin-top: 3rem;  overflow-y: scroll; height: auto; max-height: 50rem;
+
+}
+.dailyListCompleted{
+  overflow-y: scroll; height: auto; max-height: 50rem; margin-bottom:5rem;
+}
+
+.formCheckCompleted{
+  margin-left: 1rem; margin-top: 2rem
+}
+
+.formCheckPriority{
+  margin-left: 45rem; margin-top: -2rem
+}
+
+.ComplatedFont{
+   margin-top: 3rem;
+}

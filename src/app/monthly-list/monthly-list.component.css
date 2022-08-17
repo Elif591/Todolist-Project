@@ -1,0 +1,9 @@
+.monthlyList{
+  margin-top: 3rem;  overflow-y: scroll; height: auto; max-height: 50rem;
+}
+.monthlyListCompleted{
+  overflow-y: scroll; height: auto; max-height: 50rem; margin-bottom:5rem;
+}
+.complatedFont{
+  margin-top: 10rem;
+}

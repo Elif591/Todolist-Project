@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ITask } from '../tasks/tasks.model';
 import { AuthService } from '../auth/auth.service';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { routes } from '../app-routing.module';
+
+
 
 @Component({
   selector: 'app-daily-list',
@@ -12,14 +13,23 @@ import { routes } from '../app-routing.module';
 })
 export class DailyListComponent implements OnInit {
 
-  constructor( private authservice:AuthService , private toastr:ToastrService , private router : Router ) { }
+  constructor( private authservice:AuthService , private toastr:ToastrService , private router : Router) { }
   @Input() tasks = new Array<ITask>;
+  @Output() delete = new EventEmitter();
+  @Output() checkFalse = new EventEmitter();
+  @Output() checkTrue = new EventEmitter();
+  @Output() priorityFalse = new EventEmitter();
+  @Output() priorityTrue = new EventEmitter();
    task = new Array<ITask>;
    tasktitle : string;
    explanation : string;
    note : string;
    startDate : string;
-   complated : boolean;
+   finishDate : string;
+   completed : boolean;
+   taskComplated : boolean;
+   taskPriority : boolean;
+
   ngOnInit(): void {
 
   }
@@ -32,18 +42,64 @@ export class DailyListComponent implements OnInit {
          this.explanation = x.explanation
          this.note = x.note
          this.startDate = x.startDate
-         this.complated = x.completed
+         this.finishDate = x.finishDate
+         this.completed = x.completed
       }))
-     }}
+     }
+    }
 
      dailydelete(taskId : number){
         this.authservice.DeleteTask(taskId).subscribe((response) => {
             if(response != false){
-
                 this.toastr.warning('Delete task');
-                window.location.reload();
+                 this.delete.emit(taskId);
+            }
+        })
+     }
+
+
+
+     Check(taskId : number){
+     this.taskComplated = this.tasks.find((x) => x.taskId == taskId).completed
+     if(this.taskComplated == true){
+          this.authservice.ComplatedChangeTask(taskId).subscribe((response) => {
+            if(response != false){
+                this.toastr.success('Succesfully');
+                this.checkFalse.emit(taskId)
+            }
+        })
+     }else{
+    this.authservice.ComplatedTask(taskId).subscribe((response) => {
+            if(response != false){
+                this.toastr.success('Succesfully');
+                this.checkTrue.emit(taskId)
             }
         })
 
      }
+     }
+
+
+     Priorty(taskId : number){
+      this.taskPriority = this.tasks.find((x) => x.taskId == taskId).priority
+     if(this.taskPriority == true){
+          this.authservice.PriorityTask(taskId).subscribe((response) => {
+            if(response != false){
+                this.toastr.success('Succesfully');
+                this.priorityFalse.emit(taskId)
+            }
+        })
+     }else{
+    this.authservice.PriorityChangeTask(taskId).subscribe((response) => {
+            if(response != false){
+                this.toastr.success('Succesfully');
+                this.priorityTrue.emit(taskId)
+            }
+        })
+
+     }
+
+ }
+
+
 }

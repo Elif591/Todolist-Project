@@ -16,7 +16,8 @@ export class MonthlyListComponent implements OnInit {
    explanation : string
    note : string
    startDate : string
-   complated : boolean
+  finishDate : string
+   completed : boolean
   ngOnInit(): void {
 
   }
@@ -28,8 +29,8 @@ export class MonthlyListComponent implements OnInit {
          this.explanation = x.explanation
          this.note = x.note
          this.startDate = x.startDate
-         this.complated = x.completed
+         this.completed = x.completed
+         this.finishDate = x.finishDate
       }))
      }}
-
 }

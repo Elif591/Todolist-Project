@@ -1,18 +1,18 @@
 <app-nav-bar></app-nav-bar>
-<div class="wrapper fadeInDown" style="margin-top: 7rem;">
+<div class="wrapper fadeInDown">
   <div id="formContent">
-    <div class="fadeIn first" style="margin-top: 2rem">
+    <div class="fadeIn first" >
       <a class="underlineHover">Create new Task</a>
 
 
       </div>
 
     <form
+    class="form"
       [formGroup]="createTaskForm"
       (ngSubmit)="createTask(createTaskForm.value)"
       autocomplete="off"
       novalidate
-      style="margin-top: 2rem"
     >
       <div class="form-group">
         <em
@@ -58,6 +58,7 @@
         type="submit"
         class="fadeIn fourth"
         value="Create new task"
+        (click)="inputControl()"
       />
     </form>
       <a class="underlineHover" [routerLink]="['/dashboard']">Go Back</a>
