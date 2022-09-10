@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoginGuard } from './login/loginGuard';
 import { DashboardGuard } from '../app/dashboard/DashboardGuard';
 import { ErrorComponent } from './error/error.component';
+import { TaskService } from './tasks/task.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,7 @@ import { ErrorComponent } from './error/error.component';
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [AuthService, ToastrService, LoginGuard, DashboardGuard],
+  providers: [AuthService, ToastrService, LoginGuard, DashboardGuard ,TaskService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

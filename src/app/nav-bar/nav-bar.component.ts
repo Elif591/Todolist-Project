@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { TaskService } from '../tasks/task.service';
 import { ITask } from '../tasks/tasks.model';
 
 @Component({
@@ -9,7 +10,7 @@ import { ITask } from '../tasks/tasks.model';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService ) {}
+  constructor(private router: Router, private authService: AuthService , private taskService:TaskService ) {}
   userName: string;
   searchTerm: string = '';
   foundTasks= new Array<string>;
@@ -34,10 +35,10 @@ export class NavBarComponent implements OnInit {
     AllTasks() {
     let data = localStorage.getItem('token');
     let decoded = this.authService.DecodeToken(data);
-    this.authService.AllTasks(Number(decoded.sub)).subscribe((resp) => {
+    this.taskService.AllTasks(Number(decoded.sub)).subscribe((resp : any) => {
 
       if (resp != null) {
-        resp.forEach((task=>{
+        resp.forEach(((task:any)=>{
         this.tasks.push(task)
        }))
       }
@@ -50,9 +51,9 @@ export class NavBarComponent implements OnInit {
     let data = localStorage.getItem('token');
     let decoded = this.authService.DecodeToken(data);
     if(searchTerm.length >= 2){
-    this.authService.Searchtasks(Number(decoded.sub) , searchTerm).subscribe((resp) => {
+    this.taskService.Searchtasks(Number(decoded.sub) , searchTerm).subscribe((resp) => {
       if (resp != null) {
-        resp.forEach((task=>{
+        resp.forEach(((task:any)=>{
         this.foundTasks.push(task.taskTitle)
          this.tasks.push(task)
        }))

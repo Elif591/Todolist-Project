@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { TaskService } from '../tasks/task.service';
 import { ITask } from '../tasks/tasks.model';
 
 @Component({
@@ -8,7 +9,7 @@ import { ITask } from '../tasks/tasks.model';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private authservice: AuthService,private cd: ChangeDetectorRef) {}
+  constructor(private taskService: TaskService , private authService:AuthService) {}
   tasks = new Array<ITask>;
 
 
@@ -20,8 +21,8 @@ export class DashboardComponent implements OnInit {
 
   AllTasks() {
     let data = localStorage.getItem('token');
-    let decoded = this.authservice.DecodeToken(data);
-    this.authservice.AllTasks(Number(decoded.sub)).subscribe((resp) => {
+    let decoded = this.authService.DecodeToken(data);
+    this.taskService.AllTasks(Number(decoded.sub)).subscribe((resp) => {
      if (resp != null) {
         resp.forEach((task=>{
         this.tasks.push(task)

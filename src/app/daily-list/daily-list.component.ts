@@ -3,6 +3,7 @@ import { ITask } from '../tasks/tasks.model';
 import { AuthService } from '../auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { TaskService } from '../tasks/task.service';
 
 
 
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class DailyListComponent implements OnInit {
 
-  constructor( private authservice:AuthService , private toastr:ToastrService , private router : Router) { }
+  constructor( private taskService:TaskService , private toastr:ToastrService , private router : Router) { }
   @Input() tasks = new Array<ITask>;
   @Output() delete = new EventEmitter();
   @Output() checkFalse = new EventEmitter();
@@ -49,7 +50,7 @@ export class DailyListComponent implements OnInit {
     }
 
      dailydelete(taskId : number){
-        this.authservice.DeleteTask(taskId).subscribe((response) => {
+        this.taskService.DeleteTask(taskId).subscribe((response) => {
             if(response != false){
                 this.toastr.warning('Delete task');
                  this.delete.emit(taskId);
@@ -62,14 +63,14 @@ export class DailyListComponent implements OnInit {
      Check(taskId : number){
      this.taskComplated = this.tasks.find((x) => x.taskId == taskId).completed
      if(this.taskComplated == true){
-          this.authservice.ComplatedChangeTask(taskId).subscribe((response) => {
+          this.taskService.ComplatedChangeTask(taskId).subscribe((response) => {
             if(response != false){
                 this.toastr.success('Succesfully');
                 this.checkFalse.emit(taskId)
             }
         })
      }else{
-    this.authservice.ComplatedTask(taskId).subscribe((response) => {
+    this.taskService.ComplatedTask(taskId).subscribe((response) => {
             if(response != false){
                 this.toastr.success('Succesfully');
                 this.checkTrue.emit(taskId)
@@ -83,14 +84,14 @@ export class DailyListComponent implements OnInit {
      Priorty(taskId : number){
       this.taskPriority = this.tasks.find((x) => x.taskId == taskId).priority
      if(this.taskPriority == true){
-          this.authservice.PriorityTask(taskId).subscribe((response) => {
+          this.taskService.PriorityTask(taskId).subscribe((response) => {
             if(response != false){
                 this.toastr.success('Succesfully');
                 this.priorityFalse.emit(taskId)
             }
         })
      }else{
-    this.authservice.PriorityChangeTask(taskId).subscribe((response) => {
+    this.taskService.PriorityChangeTask(taskId).subscribe((response) => {
             if(response != false){
                 this.toastr.success('Succesfully');
                 this.priorityTrue.emit(taskId)

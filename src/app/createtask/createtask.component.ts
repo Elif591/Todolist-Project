@@ -9,6 +9,7 @@ import { ITask } from '../tasks/tasks.model';
 import { AuthService } from '../auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { TaskService } from '../tasks/task.service';
 
 @Component({
   selector: 'app-createtask',
@@ -18,7 +19,8 @@ import { Router } from '@angular/router';
 export class CreatetaskComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
-    private authservice: AuthService,
+    private taskService: TaskService,
+    private authService:AuthService,
     private toastr: ToastrService,
     private router: Router
   ) {}
@@ -39,9 +41,9 @@ export class CreatetaskComponent implements OnInit {
 
   createTask(formValues: ITask) {
     let data = localStorage.getItem('token');
-    let decoded = this.authservice.DecodeToken(data);
+    let decoded = this.authService.DecodeToken(data);
     if (this.createTaskForm.valid) {
-      this.authservice
+      this.taskService
         .createNewTask(
           formValues.taskTitle,
           formValues.explanation,
