@@ -1,22 +1,10 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+TodoList is a project that has user login and can see the tasks that the user adds daily on the interface, and can perform operations such as adding, deleting and editing. The user can take the completed task to the completed section or make changes about the task status. Searching within tasks is done dynamically.
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+1.	Clone project
+2.	npm i && npm i -legacy -peer -deps
+3.	Register && Login
+4.	Create new task
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
